@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useForm } from "react-hook-form";
 import { registerUser } from '../../Redux/actions/signin_actions';
+import { Link } from "react-router-dom";
 
 interface IFormData {
     username: string;
@@ -99,6 +100,12 @@ function SignUp() {
             </div>
 
             <button type="submit" disabled={submitting}>Sign Up</button>
+            <div>
+                Already have an account? 
+                <Link to="/login">
+                    Login here!
+                </Link>
+            </div>
         </form>
     )
 }
