@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useForm } from "react-hook-form";
-import { registerUser } from '../../Redux/actions/signin_actions';
+import { registerUser } from '../../Redux/actions/user_actions';
 import { Link } from "react-router-dom";
 
 interface IFormData {

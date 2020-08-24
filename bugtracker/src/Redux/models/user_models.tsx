@@ -1,7 +1,8 @@
 export interface UserState {
+    loggedIn: boolean;
     user: UserData;
     tickets: Tickets[];
-    token: "";
+    token: string;
 }
 
 export interface UserData {

@@ -1,10 +1,12 @@
-import { UserState } from './../models/signin_model';
+import { UserState } from '../models/user_models';
 import {
     RegisterActionTypes,
     SET_USER_STATE,
-} from "../actions/types/signin_types";
+    LOG_USER_OUT,
+} from "../actions/types/user_types";
 
 const initialState: UserState = {
+    loggedIn: false,
     user: {
         id: 0,
         username: "",
@@ -17,7 +19,7 @@ const initialState: UserState = {
     token: ""
 };
 
-export function signInReducer(
+export function userReducer(
     state = initialState,
     action: RegisterActionTypes
 ): UserState {
@@ -27,9 +29,26 @@ export function signInReducer(
             console.log("State in reducer: ", action.payload)
             return {
                 ...state,
+                loggedIn: true,
                 user: action.payload.user,
                 tickets: action.payload.tickets || [],
                 token: action.payload.token
+            }
+
+        case LOG_USER_OUT:
+            console.log("Logging user out....");
+            return {
+                loggedIn: false,
+                user: {
+                    id: 0,
+                    username: "",
+                    password: "",
+                    first_name: "",
+                    last_name: "",
+                    email: ""
+                },
+                tickets: [],
+                token: ""
             }
         default:
             return state;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+
 import { useForm } from "react-hook-form";
-import { loginUser } from '../../Redux/actions/signin_actions';
+import { loginUser } from '../../Redux/actions/user_actions';
 import { Link } from "react-router-dom";
 
 interface IFormData {
@@ -29,6 +29,7 @@ function SignIn() {
                     type="text"
                     name="username"
                     id="username"
+                    defaultValue="joedirt11"
                     ref={register({ required: "This is a required field" })} />
                 { errors.username ? <p>{errors.username.message}</p> : null }
             </div>
@@ -39,6 +40,7 @@ function SignIn() {
                     type="password"
                     name="password"
                     id="password"
+                    defaultValue="Testp@ss1"
                     ref={register({ required: "This is a required field" })} />
                 { errors.password ? <p>{errors.password.message}</p> : null }
             </div>
@@ -54,8 +56,4 @@ function SignIn() {
     )
 }
 
-const mstp = () => {
-    return {};
-};
-  
-export default connect(mstp, { loginUser })(SignIn);
+export default SignIn;
