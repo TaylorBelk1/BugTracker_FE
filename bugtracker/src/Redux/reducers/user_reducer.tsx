@@ -15,7 +15,6 @@ const initialState: UserState = {
         last_name: "",
         email: ""
     },
-    tickets: [],
     token: ""
 };
 
@@ -31,7 +30,6 @@ export function userReducer(
                 ...state,
                 loggedIn: true,
                 user: action.payload.user,
-                tickets: action.payload.tickets || [],
                 token: action.payload.token
             }
 
@@ -47,7 +45,6 @@ export function userReducer(
                     last_name: "",
                     email: ""
                 },
-                tickets: [],
                 token: ""
             }
         default:
