@@ -10,6 +10,7 @@ import PrivateRoute from './Private';
 import PublicRoute from './Public';
 import { UserState } from '../../Redux/models/user_models';
 import { AppState } from '../../Redux/index';
+import TicketMain from '../Dashboard/TicketView/TicketMain';
 
 interface IProps {
     user: UserState
@@ -20,11 +21,17 @@ const Pages = (props: IProps) => {
 
     return(
         <Switch>
-            <PublicRoute path='/' isAuth={props.user.loggedIn} exact={true} component={SignIn} />
-            <PublicRoute path='/login' isAuth={props.user.loggedIn} exact={true} component={SignIn} />
-            <PublicRoute path='/register' isAuth={props.user.loggedIn} exact={true} component={SignUp} />
+            <PublicRoute path='/' isAuth={props.user.loggedIn}
+                exact={true} component={SignIn} />
+            <PublicRoute path='/login' isAuth={props.user.loggedIn}
+                exact={true} component={SignIn} />
+            <PublicRoute path='/register' isAuth={props.user.loggedIn}
+                exact={true} component={SignUp} />
 
-            <PrivateRoute path='/dashboard' isAuth={props.user.loggedIn} exact={true} component={Dashboard} />
+            <PrivateRoute path='/dashboard' isAuth={props.user.loggedIn}
+                exact={true} component={Dashboard} />
+            <PrivateRoute path='/tickets' isAuth={props.user.loggedIn}
+                exact={true} component={TicketMain} />
         </Switch>
     )
 }
