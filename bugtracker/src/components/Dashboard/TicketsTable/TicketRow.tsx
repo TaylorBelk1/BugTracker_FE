@@ -12,8 +12,7 @@ interface IProps {
 const TicketRow = (props: IProps) => {
     const { ticket } = props;
     const date = moment.unix(parseInt(ticket.created_at)).format('MM/DD/YYYY h:mm A');
-    console.log(date)
-
+    console.log(ticket.id)
     return (
        <TableRow key={ticket.name}>
            

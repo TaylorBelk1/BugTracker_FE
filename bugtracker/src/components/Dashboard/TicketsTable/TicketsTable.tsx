@@ -29,8 +29,6 @@ const TicketsTable = (props: IProps) => {
     const classes = useStyles();
     const { tickets } = props;
 
-    console.log("TICKETS: ", props && props)
-
     return(
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="tickets">
