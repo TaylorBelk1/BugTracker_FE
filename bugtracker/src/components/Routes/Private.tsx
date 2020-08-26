@@ -1,28 +1,28 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-interface IProps {
-    exact?: boolean;
-    path: string;
-    isAuth: boolean | null;
-    component: React.ComponentType<any>;
-}
-
-const PrivateRoute = ({
-    component: Component,
-    isAuth,
-    ...otherProps
-  }: IProps) => {
-    return (
-    <div>
-      <Route
-        render={otherProps => (
-            isAuth 
-            ? <Component {...otherProps} />
-            : <Redirect to='/login' />
-        )}
-      />
-    </div>
-  )};
+const PrivateRoute: React.ComponentType<any> = ({
+  component: Component,
+  isAuth,
+  ...rest
+}) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        isAuth ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  );
+};
 
 export default PrivateRoute

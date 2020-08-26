@@ -28,10 +28,22 @@ const Pages = (props: IProps) => {
             <PublicRoute path='/register' isAuth={props.user.loggedIn}
                 exact={true} component={SignUp} />
 
-            <PrivateRoute path='/dashboard' isAuth={props.user.loggedIn}
-                exact={true} component={Dashboard} />
-            <PrivateRoute path='/tickets' isAuth={props.user.loggedIn}
-                exact={true} component={TicketMain} />
+            <PrivateRoute
+                exact path='/dashboard'
+                isAuth={props.user.loggedIn}
+                component={Dashboard}
+            />
+
+            <PrivateRoute
+                exact path='/tickets/:id'
+                isAuth={props.user.loggedIn}
+                component={TicketMain}
+            />
+
+            {/* <PrivateRoute path='/dashboard' isAuth={props.user.loggedIn}
+                component={Dashboard} />
+            <PrivateRoute path='/tickets/:id' isAuth={props.user.loggedIn}
+                component={TicketMain} /> */}
         </Switch>
     )
 }
