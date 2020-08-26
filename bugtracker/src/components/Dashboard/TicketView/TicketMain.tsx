@@ -1,13 +1,21 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 interface IProps {
-    id: Number;
+    
 }
 
-const TicketMain = (props: IProps) => {
-    console.log()
+interface RouteParams {
+    id: string;
+}
+
+const TicketMain = () => {
+    const params = useParams<RouteParams>();
     return (
-        <div>Ticket main</div>
+        <div>
+            <div>Ticket main</div>
+            <h3>Ticket Number: {params.id}</h3>
+        </div>
     )
 }
 
